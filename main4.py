@@ -16,7 +16,7 @@ def construct_url(_):
     card_url = 'https://mavin.io/search?q=' + cards.get(_)[2] + '+' + cards.get(_)[3] + '+' + cards.get(_)[0] + '+' \
                + cards.get(_)[1] + '+' + cards.get(_)[4] + \
                '+-tiffany+-autographed+-glossy+-signed+-iconic+-whited+-case+-dna+-auto+-nnof+-stickercard+-archives+-' \
-               'rare+-name+-project+&bt=sold&sort=PricePlusShippingHighest&cat=213'
+               'rare+-name+-autograph+-project+&bt=sold&sort=PricePlusShippingHighest&cat=213'
     return card_url
 
 driver = webdriver.Firefox()
@@ -68,22 +68,21 @@ cards = {1: ['Kevin', 'Romine', '1989', 'Fleer', '98'],
          45: ['Dual', 'Heat', '1989', 'Fleer', '635'],
          46: ['Cannon', 'Arms', '1989', 'Fleer', '637'],
          47: ['Fred', 'McGriff', '1989', 'Fleer', '240'],
-         48: ['Jose', 'Alvarez', '1989', 'Fleer', '585'],
-         49: ['Dennis', 'Eckersley', '1989', 'Fleer', '7'],
-         50: ['Dale', 'Murphy', '1989', 'Fleer', '596'],
-         51: ['Ruben', 'Sierra', '1989', 'Fleer', '532'],
-         52: ['Orel', 'Hershiser', '1989', 'Fleer', '7'],
-         53: ['Will', 'Clark', '1989', 'Fleer', '3'],
-         54: ['Bobby', 'Bonilla', '1989', 'Fleer', '1'],
-         55: ['Jose', 'Canseco', '1989', 'Fleer', '2'],
-         56: ['Darryl', 'Strawberry', '1989', 'Fleer', '10'],
-         57: ['Randy', 'Johnson blacked', '1989', 'Fleer', '381']
+         48: ['Dennis', 'Eckersley', '1989', 'Fleer', '7'],
+         49: ['Dale', 'Murphy', '1989', 'Fleer', '596'],
+         50: ['Ruben', 'Sierra', '1989', 'Fleer', '532'],
+         51: ['Orel', 'Hershiser', '1989', 'Fleer', '7'],
+         52: ['Will', 'Clark', '1989', 'Fleer', '3'],
+         53: ['Bobby', 'Bonilla', '1989', 'Fleer', '1'],
+         54: ['Jose', 'Canseco', '1989', 'Fleer', '2'],
+         55: ['Darryl', 'Strawberry', '1989', 'Fleer', '10'],
+         56: ['Randy', 'Johnson blacked', '1989', 'Fleer', '381']
          }
 
-for _ in cards:
-    card_url = construct_url(_)
-    card_info(card_url)
-    random_sleep()
+#for _ in cards:
+#    card_url = construct_url(_)
+#    card_info(card_url)
+#    random_sleep()
 
 cards = {1: ['Rickey', 'Henderson', '1990', 'Topps', '450'],
          2: ['Bo', 'Jackson', '1990', 'Topps', '300'],
@@ -123,13 +122,28 @@ cards = {1: ['Rickey', 'Henderson', '1990', 'Topps', '450'],
          36: ['Kirby', 'Puckett', '1990', 'Topps', '391'],
          37: ['Ruben', 'Sierra', '1990', 'Topps', '390'],
          38: ['Don', 'Mattingly', '1990', 'Topps', '200'],
-         39: ['George', 'Brett', '1990', 'Topps', '60']
+         39: ['Nolan', 'Ryan', '1990', 'Topps', '2'],
+         40: ['George', 'Brett', '1990', 'Topps', '60'],
+         41: ['Jose', 'Canseco', '1990', 'Topps', '250'],
+         42: ['Eric', 'Davuc', '1990', 'Topps', '260'],
+         43: ['Kirby', 'Puckett', '1990', 'Topps', '700'],
+         44: ['Gary', 'Sheffield', '1990', 'Topps', '718'],
+         45: ['Record', 'Breaker', '1990', 'Topps', '7'],
+         46: ['Sammy', 'Sosa', '1990', 'Topps', '692'],
+         47: ['Robin', 'Yount', '1990', 'Topps', '290'],
+         48: ['Darryl', 'Strawberry', '1990', 'Topps', '600'],
+         49: ['Will', 'Clark', '1990', 'Topps', '100'],
+         50: ['Larry', 'Walker', '1990', 'Topps', '757'],
+         51: ['Record', 'Breaker', '1990', 'Topps', '8'],
+         52: ['Ken', 'Griffey', '1990', 'Topps', '581'],
+         53: ['Carlos', 'Martinez', '1990', 'Topps', '461'],
+         54: ['Greg', 'Vaughn', '1990', 'Topps', '57'],
          }
 
-for _ in cards:
-    card_url = construct_url(_)
-    card_info(card_url)
-    random_sleep()
+#for _ in cards:
+#    card_url = construct_url(_)
+#    card_info(card_url)
+#    random_sleep()
 
 cards = {1: ['Tom', 'Herr', '1989', 'Topps Traded', '49T'],
          2: ['Jimmy', 'Jones', '1989', 'Topps Traded', '58T'],
@@ -169,10 +183,10 @@ cards = {1: ['Tom', 'Herr', '1989', 'Topps Traded', '49T'],
          45: ['Rickey', 'Henderson', '1989', 'Topps Traded', '48T']
          }
 
-for _ in cards:
-    card_url = construct_url(_)
-    card_info(card_url)
-    random_sleep()
+#for _ in cards:
+#    card_url = construct_url(_)
+#    card_info(card_url)
+#    random_sleep()
 
 cards = {1: ['Will', 'Clark', '1986', 'Topps Traded', '24T'],
          2: ['Kevin', 'Mitchell', '1986', 'Topps Traded', '74T'],
@@ -209,7 +223,99 @@ cards = {1: ['Will', 'Clark', '1986', 'Topps Traded', '24T'],
          35: ['Jose', 'Canseco', '1986', 'Topps Traded', '20T'],
          }
 
+#for _ in cards:
+#    card_url = construct_url(_)
+#    card_info(card_url)
+#    random_sleep()
+
+cards = {1: ['Nolan', 'Ryan', '1991', 'Topps Stadium Club', '200'],
+         2: ['Craig', 'Biggio', '1991', 'Topps Stadium Club', '176'],
+         3: ['Bo', 'Jackson', '1991', 'Topps Stadium Club', '224'],
+         4: ['Juan', 'Gonzalez', '1991', 'Topps Stadium Club', '237'],
+         5: ['Barry', 'Bonds', '1991', 'Topps Stadium Club', '220'],
+         6: ['Rickey', 'Henderson', '1991', 'Topps Stadium Club', '120'],
+         7: ['Sammy', 'Sosa', '1991', 'Topps Stadium Club', '6'],
+         8: ['George', 'Brett', '1991', 'Topps Stadium Club', '159'],
+         9: ['Dave', 'Justice', '1991', 'Topps Stadium Club', '26'],
+         10: ['Frank', 'Thomas', '1991', 'Topps Stadium Club', '57'],
+         11: ['Ken', 'Griffey JR', '1991', 'Topps Stadium Club', '270'],
+         12: ['Wade', 'Boggs', '1991', 'Topps Stadium Club', '170'],
+         13: ['Don', 'Mattingly', '1991', 'Topps Stadium Club', '21'],
+         14: ['Eddie', 'Murray', '1991', 'Topps Stadium Club', '177'],
+         15: ['Dale', 'Murphy', '1991', 'Topps Stadium Club', '243'],
+         16: ['Ozzie', 'Smith', '1991', 'Topps Stadium Club', '154'],
+         17: ['Greg', 'Maddux', '1991', 'Topps Stadium Club', '126'],
+         18: ['Wade', 'Boggs', '1991', 'Topps Stadium Club', '170'],
+         19: ['Cecil', 'Fielder', '1991', 'Topps Stadium Club', '186'],
+         20: ['Wally', 'Joyner', '1991', 'Topps Stadium Club', '2'],
+         21: ['Kirby', 'Puckett', '1991', 'Topps Stadium Club', '110'],
+         23: ['Orel', 'Hershiser', '1991', 'Topps Stadium Club', '244'],
+         24: ['Gary', 'Sheffield', '1991', 'Topps Stadium Club', '95'],
+         25: ['Junior', 'Ortiz', '1991', 'Topps Stadium Club', '13'],
+         26: ['Jose', 'Canseco', '1991', 'Topps Stadium Club', '155'],
+         27: ['Dave', 'Winfield', '1991', 'Topps Stadium Club', '263']
+         }
+
+#for _ in cards:
+#    card_url = construct_url(_)
+#    card_info(card_url)
+#    random_sleep()
+
+
+cards = {1: ['Barry', 'Bonds foil', '1992', 'Bowman', '590'],
+         2: ['Kirby', 'Puckett', '1992', 'Bowman', '80'],
+         3: ['David', 'Justice', '1992', 'Bowman', '312'],
+         4: ['Dave', 'Stewart', '1992', 'Bowman', '280'],
+         5: ['Juan', 'Gonzalez', '1992', 'Bowman', '84'],
+         6: ['Tom', 'Glavine', '1992', 'Bowman', '699'],
+         7: ['Eddie', 'Murray', '1992', 'Bowman', '433']
+         }
+
+#for _ in cards:
+#    card_url = construct_url(_)
+#    card_info(card_url)
+#    random_sleep()
+
+cards = {1: ['Tony', 'Gwynn', '1993', 'Leaf', '2'],
+         2: ['Cal', 'Ripken Jr', '1993', 'Leaf', '5'],
+         3: ['Eddie', 'Murray', '1993', 'Leaf', '4'],
+         4: ['Ryan', 'Sandberg', '1993', 'Leaf', '8'],
+         5: ['Tim', 'Salmon', '1993', 'Leaf', '10'],
+         6: ['Nolan', 'Ryan', '1993', 'Leaf', '1'],
+         7: ['Robin', 'Yount', '1993', 'Leaf', '3'],
+         8: ['Frank', 'Thomas', '1993', 'Leaf', '10'],
+         9: ['Nolan', 'Ryan', '1993', 'Leaf', '115'],
+         10: ['Don', 'Mattingly', '1993', 'Leaf', '2'],
+         11: ['Tony', 'Gwynn', '1993', 'Leaf', '28'],
+         12: ['Jose', ' Canseco', '1993', 'Leaf', '9'],
+         13: ['Travis', 'Fryman', '1993', 'Leaf', '16'],
+         14: ['Ivan', 'Rodriguez', '1993', 'Leaf', '5'],
+         15: ['Jeff', 'Bagwell', '1993', 'Leaf', '125'],
+         16: ['Eddie', 'Murray', '1993', 'Leaf', '167'],
+         17: ['Ken', 'Griffey Jr', '1993', 'Leaf', '319'],
+         18: ['Frank', 'Thomas', '1993', 'Leaf', '195'],
+         19: ['Ken', 'Griffey Jr', '1993', 'Leaf', '7'],
+         20: ['Frank', 'Thomas', '1993', 'Leaf', '2'],
+         21: ['Mike', 'Piazza', '1993', 'Leaf', '35'],
+         22: ['Frank', 'Thomas', '1993', 'Leaf', '1'],
+         23: ['Robin', 'Yount', '1993', 'Leaf', '188'],
+         24: ['David', 'Justice', '1993', 'Leaf', '50'],
+         25: ['Steve', 'Avery', '1993', 'Leaf', '121']
+         }
+
+#for _ in cards:
+#    card_url = construct_url(_)
+#    card_info(card_url)
+#    random_sleep()
+
+cards = {1: ['Ken', 'Griffey Jr PSA', '1991', 'Donruss', '49'],
+         2: ['Ken', 'Griffey Jr PSA', '1991', 'Donruss', '77'],
+         3: ['Frank', 'Thomas', '1991', 'Donruss', '477'],
+         4: ['Nolan', 'Ryan', '1991', 'Donruss', '89']
+         }
+
+
 for _ in cards:
     card_url = construct_url(_)
     card_info(card_url)
-    random_sleep()
+#    random_sleep()
