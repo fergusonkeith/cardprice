@@ -303,10 +303,10 @@ cards = {1: ['Tony', 'Gwynn', '1993', 'Leaf', '2'],
          25: ['Steve', 'Avery', '1993', 'Leaf', '121']
          }
 
-#for _ in cards:
-#    card_url = construct_url(_)
-#    card_info(card_url)
-#    random_sleep()
+for _ in cards:
+    card_url = construct_url(_)
+    card_info(card_url)
+    random_sleep()
 
 cards = {1: ['Ken', 'Griffey Jr PSA', '1991', 'Donruss', '49'],
          2: ['Ken', 'Griffey Jr PSA', '1991', 'Donruss', '77'],
