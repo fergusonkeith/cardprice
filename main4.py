@@ -1,88 +1,115 @@
 from selenium import webdriver
 from random import randint
 from time import sleep
+#from columnar import columnar
+from tabulate import tabulate
+
+data = ['', '', '', '', '', '']
 
 def random_sleep():
-    sleep(randint(20, 100))
+    sleep(randint(5, 15))
 
 def card_info(card_url):
     driver.get(card_url)
     soldprice = driver.find_elements_by_tag_name('h3')
-    solddate = driver.find_elements_by_xpath('//*[@class="time"]')
+    #solddate = driver.find_elements_by_xpath('//*[@class="time"]')
+    #solddate[0] = "Unknown"
+    #if solddate[0].text is None:
+    #    solddate[0].text = "Unknown"
+    #else:
+    #    solddate[0].text = solddate[0].text
+    #card grade, shipping, case,
+    #value_after_costs = float(soldprice[0].get_attribute('data-soldandshipping')) - 12 - 1 - 1
+    #headers = ['First', 'Last', 'Year', 'Brand']
+    first = cards.get(_)[0]
+    last = cards.get(_)[1]
+    number = cards.get(_)[4]
+    year = cards.get(_)[2]
+    brand = cards.get(_)[3]
+    #data.append([first, last, number, year, brand, '$' + str(round(value_after_costs, 2))])
+    data.append([first, last, number, year, brand, '$' + soldprice[0].get_attribute('data-soldandshipping')])
+
+
+
+    #print(cards.get(_)[0] + "\t\t" + cards.get(_)[1] + "\t\t" + cards.get(_)[2] + "\t\t" + cards.get(_)[3] + " Sold Price: $" +
+    #      soldprice[0].get_attribute('data-soldandshipping') + "\t\tPotential: $" + str(round(value_after_costs,2)))
+
+
     print(cards.get(_)[0] + " " + cards.get(_)[1] + " " + cards.get(_)[2] + " " + cards.get(_)[3] + " Sold Price: $" +
-          soldprice[0].get_attribute('data-soldandshipping') + " " + solddate[0].text)
+          soldprice[0].get_attribute('data-soldandshipping'))
+    #+ " " + solddate[0].text
 
 def construct_url(_):
     card_url = 'https://mavin.io/search?q=' + cards.get(_)[2] + '+' + cards.get(_)[3] + '+' + cards.get(_)[0] + '+' \
                + cards.get(_)[1] + '+' + cards.get(_)[4] + \
                '+-tiffany+-autographed+-glossy+-signed+-iconic+-whited+-case+-dna+-auto+-nnof+-stickercard+-archives+-' \
-               'rare+-name+-autograph+-project+&bt=sold&sort=PricePlusShippingHighest&cat=213'
+               'rare+-name+-autograph+-project+-white+-both+&bt=sold&sort=PricePlusShippingHighest&cat=213'
     return card_url
 
 driver = webdriver.Firefox()
 
-cards = {1: ['Kevin', 'Romine', '1989', 'Fleer', '98'],
-         2: ['Will', 'Clark', '1989', 'Fleer', '325'],
-         3: ['Greg', 'Maddux', '1989', 'Fleer', '431'],
-         4: ['Don', 'Mattingly', '1989', 'Fleer', '258'],
-         5: ['Wade', 'Boggs', '1989', 'Fleer', '81'],
-         6: ['Ozzie', 'Smith', '1989', 'Fleer', '463'],
-         7: ['Jose', 'Canseco', '1989', 'Fleer', '5'],
-         8: ['Wally', 'Joyner', '1989', 'Fleer', '481'],
-         9: ['Mark', 'McGwire', '1989', 'Fleer', '17'],
-         10: ['Rickey', 'Henderson', '1989', 'Fleer', '254'],
-         11: ['Power', 'Center', '1989', 'Fleer', '639'],
-         12: ['Fernando', 'Valenzuela', '1989', 'Fleer', '76'],
-         13: ['Ryan', 'Sandberg', '1989', 'Fleer', '437'],
-         14: ['Bobby', 'Bonilla', '1989', 'Fleer', '203'],
-         15: ['Roger', 'Clemens', '1989', 'Fleer', '85'],
-         16: ['NL', 'ALL Stars', '1989', 'Fleer', '631'],
-         17: ['Roberto', 'Alomar', '1989', 'Fleer', '299'],
-         18: ['Like Father', 'Like Sons', '1989', 'Fleer', '630'],
-         19: ['Carlton', 'Fisk', '1989', 'Fleer', '495'],
-         20: ['Tom', 'Glavine', '1989', 'Fleer', '591'],
-         21: ['Darryl', 'Strawberry', '1989', 'Fleer', '10'],
-         22: ['Sandy', 'Alomar', '1989', 'Fleer', '300'],
-         23: ['Cecil', 'Fielder', '1989', 'Fleer', '232'],
-         24: ['John', 'Smoltz', '1989', 'Fleer', '602'],
-         25: ['Dennis', 'Eckersley', '1989', 'Fleer', '7'],
-         26: ['Speed', 'Power', '1989', 'Fleer', '628'],
-         27: ['George', 'Brett', '1989', 'Fleer', '277'],
-         28: [' ', ' ', '1989', 'Fleer', '632'],
-         29: ['Robin', 'Yount', '1989', 'Fleer', '200'],
-         30: ['Tony', 'Gwynn', '1989', 'Fleer', '305'],
-         31: ['Kirby', 'Puckett', '1989', 'Fleer', '124'],
-         32: ['Cal', 'Ripken JR', '1989', 'Fleer', '617'],
-         33: ['Darryl', 'Strawberry', '1989', 'Fleer', '49'],
-         34: ['Barry', 'Bonds', '1989', 'Fleer', '202'],
-         35: ['Dwight', 'Gooden', '1989', 'Fleer', '36'],
-         36: ['Orel', 'Hershiser', '1989', 'Fleer', '62'],
-         37: ['Ken', 'Griffey JR', '1989', 'Fleer', '548'],
-         38: ['Craig', 'Biggio', '1989', 'Fleer', '353'],
-         39: ['Bill', 'Ripken ff', '1989', 'Fleer', '616'],
-         40: ['Randy', 'Johnson green tint', '1989', 'Fleer', '381'],
-         41: ['Barry', 'Bonds', '1989', 'Fleer', '202'],
-         42: ['Nolan', 'Ryan', '1989', 'Fleer', '368'],
-         43: ['Bobby', 'Bonilla', '1989', 'Fleer', '203'],
-         44: ['Gary', 'Sheffield', '1989', 'Fleer', '196'],
-         45: ['Dual', 'Heat', '1989', 'Fleer', '635'],
-         46: ['Cannon', 'Arms', '1989', 'Fleer', '637'],
-         47: ['Fred', 'McGriff', '1989', 'Fleer', '240'],
-         48: ['Dennis', 'Eckersley', '1989', 'Fleer', '7'],
-         49: ['Dale', 'Murphy', '1989', 'Fleer', '596'],
-         50: ['Ruben', 'Sierra', '1989', 'Fleer', '532'],
-         51: ['Orel', 'Hershiser', '1989', 'Fleer', '7'],
-         52: ['Will', 'Clark', '1989', 'Fleer', '3'],
-         53: ['Bobby', 'Bonilla', '1989', 'Fleer', '1'],
-         54: ['Jose', 'Canseco', '1989', 'Fleer', '2'],
-         55: ['Darryl', 'Strawberry', '1989', 'Fleer', '10'],
-         56: ['Randy', 'Johnson blacked', '1989', 'Fleer', '381']
+cards = {#1: ['Kevin', 'Romine', '1989', 'Fleer', '98'],
+         #2: ['Will', 'Clark', '1989', 'Fleer', '325'],
+         #3: ['Greg', 'Maddux', '1989', 'Fleer', '431'],
+         #4: ['Don', 'Mattingly', '1989', 'Fleer', '258'],
+         #5: ['Wade', 'Boggs', '1989', 'Fleer', '81'],
+         #6: ['Ozzie', 'Smith', '1989', 'Fleer', '463'],
+         #7: ['Jose', 'Canseco', '1989', 'Fleer', '5'],
+         #8: ['Wally', 'Joyner', '1989', 'Fleer', '481'],
+         #9: ['Mark', 'McGwire', '1989', 'Fleer', '17'],
+         #10: ['Rickey', 'Henderson', '1989', 'Fleer', '254'],
+         #11: ['Power', 'Center', '1989', 'Fleer', '639'],
+         #12: ['Fernando', 'Valenzuela', '1989', 'Fleer', '76'],
+         #13: ['Ryan', 'Sandberg', '1989', 'Fleer', '437'],
+         #14: ['Bobby', 'Bonilla', '1989', 'Fleer', '203'],
+         #15: ['Roger', 'Clemens', '1989', 'Fleer', '85'],
+         #16: ['NL', 'ALL Stars', '1989', 'Fleer', '631'],
+         #17: ['Roberto', 'Alomar', '1989', 'Fleer', '299'],
+         #18: ['Like Father', 'Like Sons', '1989', 'Fleer', '630'],
+         #19: ['Carlton', 'Fisk', '1989', 'Fleer', '495'],
+         #20: ['Tom', 'Glavine', '1989', 'Fleer', '591'],
+         #21: ['Darryl', 'Strawberry', '1989', 'Fleer', '10'],
+         #22: ['Sandy', 'Alomar', '1989', 'Fleer', '300'],
+         #23: ['Cecil', 'Fielder', '1989', 'Fleer', '232'],
+         #24: ['John', 'Smoltz', '1989', 'Fleer', '602'],
+         #25: ['Dennis', 'Eckersley', '1989', 'Fleer', '7'],
+         #26: ['Speed', 'Power', '1989', 'Fleer', '628'],
+         #27: ['George', 'Brett', '1989', 'Fleer', '277'],
+         #28: [' ', ' ', '1989', 'Fleer', '632'],
+         #29: ['Robin', 'Yount', '1989', 'Fleer', '200'],
+         #30: ['Tony', 'Gwynn', '1989', 'Fleer', '305'],
+         #31: ['Kirby', 'Puckett', '1989', 'Fleer', '124'],
+         #32: ['Cal', 'Ripken JR', '1989', 'Fleer', '617'],
+         #33: ['Darryl', 'Strawberry', '1989', 'Fleer', '49'],
+         ##34: ['Barry', 'Bonds', '1989', 'Fleer', '202'],
+         #35: ['Dwight', 'Gooden', '1989', 'Fleer', '36'],
+         #36: ['Orel', 'Hershiser', '1989', 'Fleer', '62'],
+         #37: ['Ken', 'Griffey JR', '1989', 'Fleer', '548'],
+         #38: ['Craig', 'Biggio', '1989', 'Fleer', '353'],
+         #39: ['Bill', 'Ripken ff', '1989', 'Fleer', '616'],
+         #40: ['Randy', 'Johnson green tint', '1989', 'Fleer', '381'],
+         #41: ['Barry', 'Bonds', '1989', 'Fleer', '202'],
+         #42: ['Nolan', 'Ryan', '1989', 'Fleer', '368'],
+         #43: ['Bobby', 'Bonilla', '1989', 'Fleer', '203'],
+         #44: ['Gary', 'Sheffield', '1989', 'Fleer', '196'],
+         #45: ['Dual', 'Heat', '1989', 'Fleer', '635'],
+         #46: ['Cannon', 'Arms', '1989', 'Fleer', '637'],
+         #47: ['Fred', 'McGriff', '1989', 'Fleer', '240'],
+         #48: ['Dennis', 'Eckersley', '1989', 'Fleer', '7'],
+         #49: ['Dale', 'Murphy', '1989', 'Fleer', '596'],
+         #50: ['Ruben', 'Sierra', '1989', 'Fleer', '532'],
+         #51: ['Orel', 'Hershiser', '1989', 'Fleer', '7'],
+         #52: ['Will', 'Clark', '1989', 'Fleer', '3'],
+         #53: ['Bobby', 'Bonilla', '1989', 'Fleer', '1'],
+         #54: ['Jose', 'Canseco', '1989', 'Fleer', '2'],
+         #55: ['Darryl', 'Strawberry', '1989', 'Fleer', '10'],
+         #56: ['Randy', 'Johnson blacked', '1989', 'Fleer', '381']
          }
 
-#for _ in cards:
-#    card_url = construct_url(_)
-#    card_info(card_url)
-#    random_sleep()
+for _ in cards:
+    card_url = construct_url(_)
+    card_info(card_url)
+    random_sleep()
 
 cards = {1: ['Rickey', 'Henderson', '1990', 'Topps', '450'],
          2: ['Bo', 'Jackson', '1990', 'Topps', '300'],
@@ -125,7 +152,7 @@ cards = {1: ['Rickey', 'Henderson', '1990', 'Topps', '450'],
          39: ['Nolan', 'Ryan', '1990', 'Topps', '2'],
          40: ['George', 'Brett', '1990', 'Topps', '60'],
          41: ['Jose', 'Canseco', '1990', 'Topps', '250'],
-         42: ['Eric', 'Davuc', '1990', 'Topps', '260'],
+         #42: ['Eric', 'Davuc', '1990', 'Topps', '260'],
          43: ['Kirby', 'Puckett', '1990', 'Topps', '700'],
          44: ['Gary', 'Sheffield', '1990', 'Topps', '718'],
          45: ['Record', 'Breaker', '1990', 'Topps', '7'],
@@ -136,7 +163,7 @@ cards = {1: ['Rickey', 'Henderson', '1990', 'Topps', '450'],
          50: ['Larry', 'Walker', '1990', 'Topps', '757'],
          51: ['Record', 'Breaker', '1990', 'Topps', '8'],
          52: ['Ken', 'Griffey', '1990', 'Topps', '581'],
-         53: ['Carlos', 'Martinez', '1990', 'Topps', '461'],
+         #53: ['Carlos', 'Martinez', '1990', 'Topps', '461'],
          54: ['Greg', 'Vaughn', '1990', 'Topps', '57'],
          }
 
@@ -240,7 +267,7 @@ cards = {1: ['Nolan', 'Ryan', '1991', 'Topps Stadium Club', '200'],
          10: ['Frank', 'Thomas', '1991', 'Topps Stadium Club', '57'],
          11: ['Ken', 'Griffey JR', '1991', 'Topps Stadium Club', '270'],
          12: ['Wade', 'Boggs', '1991', 'Topps Stadium Club', '170'],
-         13: ['Don', 'Mattingly', '1991', 'Topps Stadium Club', '21'],
+         #13: ['Don', 'Mattingly', '1991', 'Topps Stadium Club', '21'],
          14: ['Eddie', 'Murray', '1991', 'Topps Stadium Club', '177'],
          15: ['Dale', 'Murphy', '1991', 'Topps Stadium Club', '243'],
          16: ['Ozzie', 'Smith', '1991', 'Topps Stadium Club', '154'],
@@ -303,19 +330,71 @@ cards = {1: ['Tony', 'Gwynn', '1993', 'Leaf', '2'],
          25: ['Steve', 'Avery', '1993', 'Leaf', '121']
          }
 
-for _ in cards:
-    card_url = construct_url(_)
-    card_info(card_url)
-    random_sleep()
+#for _ in cards:
+#    card_url = construct_url(_)
+#    card_info(card_url)
+#    random_sleep()
 
 cards = {1: ['Ken', 'Griffey Jr PSA', '1991', 'Donruss', '49'],
          2: ['Ken', 'Griffey Jr PSA', '1991', 'Donruss', '77'],
          3: ['Frank', 'Thomas', '1991', 'Donruss', '477'],
-         4: ['Nolan', 'Ryan', '1991', 'Donruss', '89']
+         4: ['Nolan', 'Ryan', '1991', 'Donruss', '89'],
+         5: ['Jose', 'Canseco', '1991', 'Donruss', '50'],
+         6: ['Barry', 'Bonds', '1991', 'Donruss', '4'],
+         7: ['Ken', 'Griffey Jr', '1991', 'Donruss', '392'],
+         8: ['Roger', 'Clemens', '1991', 'Donruss', '9'],
+         9: ['Cal', 'Ripken Jr', '1991', 'Donruss', '52'],
+         10: ['Rickey', 'Henderson', '1991', 'Donruss', '53'],
+         11: ['Ken', 'Griffey Jr', '1989', 'Donruss', '33'],
+         12: ['Kirby', 'Puckett', '1990', 'Donruss', 'BC-8'],
+         13: ['Ryne', 'Sandberg', '1990', 'Donruss', '692'],
+         14: ['Mike', 'Mussina', '1993', 'Upper Deck', '233'],
+         15: ['Ken', 'Griffey Jr', '1989', 'Upper Deck', '1'],
+         16: ['Will', 'Clark', '1989', 'Upper Deck', '155']
          }
 
 
-for _ in cards:
-    card_url = construct_url(_)
-    card_info(card_url)
+#for _ in cards:
+#    card_url = construct_url(_)
+#    card_info(card_url)
 #    random_sleep()
+
+cards = {1: ['Ken', 'Griffey Jr', '1990', 'Fleer', '513'],
+         2: ['Cal', 'Ripken Jr', '1990', 'Fleer', '187'],
+         3: ['Don', 'Mattingly', '1990', 'Fleer', '2'],
+         4: ['Cal', 'Ripken Jr', '1990', 'Fleer', '8'],
+         5: ['Roger', 'Clemens', '1992', 'Post', '16'],
+         6: ['Jeff', 'Bagwell', '1992', 'Post', '1']
+         }
+
+
+#for _ in cards:
+#    card_url = construct_url(_)
+#    card_info(card_url)
+#    random_sleep()
+
+cards = {1: ['Ken', 'Griffey Jr Gold', '1993', 'Topps', '179'],
+         2: ['Frank', 'Thomas', '1993', 'Topps', '150'],
+         3: ['Kirby', 'Puckett', '1993', 'Topps', '200'],
+         4: ['Cal', 'Ripken Jr', '1993', 'Topps', '300'],
+         5: ['Don', 'Mattingly', '1993', 'Topps', '32'],
+         6: ['Jose', 'Canseco', '1993', 'Topps', '500'],
+         7: ['Cal', 'Ripken Jr', '1989', 'Score', '77'],
+         8: ['Tony', 'Gwynn', '1989', 'Score', '40'],
+         9: ['Mark', 'McGwire', '1989', 'Score', '25']
+         }
+
+#for _ in cards:
+#    card_url = construct_url(_)
+#    card_info(card_url)
+#    random_sleep()
+
+
+
+
+
+
+
+
+
+print(tabulate(data, headers=['First', 'Last', 'Number', 'Year', 'Brand', 'Potential'], tablefmt="pipe"))
